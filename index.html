@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18th Recipe | Premium Cakes Nigeria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-red: #D32F2F;
+            --dark-red: #B71C1C;
+            --white: #FFFFFF;
+            --light-gray: #F4F4F4;
+            --text-dark: #222;
+            --tiktok-black: #010101;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text-dark); background: var(--white); overflow-x: hidden; line-height: 1.6; }
+
+        /* Navbar */
+        .navbar {
+            position: fixed; top: 0; width: 100%; display: flex; justify-content: space-between;
+            align-items: center; padding: 5px 10%; background: white; z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        }
+        .logo-container { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 70px; width: auto; display: block; margin-right: 10px; }
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--primary-red); font-weight: bold; }
+        
+        .nav-links { display: flex; list-style: none; align-items: center; }
+        .nav-links li a { text-decoration: none; color: var(--text-dark); margin-left: 30px; font-weight: 600; transition: var(--transition); }
+        .nav-links li a:hover { color: var(--primary-red); }
+
+        /* Hero */
+        .hero {
+            height: 100vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=1920') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); }
+
+        /* Content */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .cake-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: var(--transition); border: 1px solid #eee; }
+        .cake-card:hover { transform: translateY(-10px); }
+        .cake-img { height: 300px; background-size: cover; background-position: center; }
+        .cake-info { padding: 30px; text-align: center; }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed; top: 0; right: -100%; width: 450px; height: 100%; background: white;
+            z-index: 2000; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.5s ease; padding: 40px;
+            overflow-y: auto;
+        }
+        .cart-sidebar.active { right: 0; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
+
+        /* Payment Details Box */
+        .payment-box { background: #FFF9F9; border: 2px dashed var(--primary-red); padding: 25px; border-radius: 15px; margin: 25px 0; text-align: left; }
+
+        /* Buttons */
+        .btn { padding: 15px 30px; border-radius: 50px; cursor: pointer; border: none; font-weight: 600; transition: var(--transition); font-family: 'Poppins'; text-decoration: none; text-align: center; }
+        .btn-red { background: var(--primary-red); color: white; width: 100%; display: block; }
+        .btn-red:hover { background: var(--dark-red); }
+
+        /* Floats */
+        .float-btn { position: fixed; left: 30px; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 100; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: 0.3s; color: white; }
+        .whatsapp-float { bottom: 30px; background: #25d366; }
+        .tiktok-float { bottom: 110px; background: var(--tiktok-black); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .cart-sidebar { width: 100%; }
+            .navbar { padding: 10px 5%; }
+            .logo-img { height: 50px; }
+            .logo-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo-container">
+            <img src="logo.jpg" class="logo-img" alt="" onerror="this.src='logo.png'; this.onerror=function(){this.style.display='none';}">
+            <span class="logo-text">18th Recipe</span>
+        </a>
+        <div style="display:flex; align-items:center;">
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="https://www.tiktok.com/@18th_recipe?_r=1&_t=ZS-943we4fg59G" target="_blank">TikTok</a></li>
+            </ul>
+            <div style="margin-left: 30px; cursor: pointer; position: relative;" onclick="toggleCart()">
+                <i class="fas fa-shopping-cart" style="font-size: 1.4rem;"></i>
+                <span id="cart-count" style="position: absolute; top:-10px; right:-12px; background:var(--primary-red); color:white; border-radius:50%; padding:2px 7px; font-size:0.7rem;">0</span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Baking Sweet Memories Across Nigeria</h1>
+            <p style="font-size: 1.3rem; margin: 20px 0 30px;">Premium Handcrafted Cakes. Cravings Satisfied.</p>
+            <a href="#menu" class="btn btn-red" style="width:auto; display:inline-block; padding: 18px 45px;">Explore Our Menu</a>
+        </div>
+    </section>
+
+    <div class="container" id="menu">
+        <h2 style="text-align:center; font-family:'Playfair Display'; font-size:3rem; margin-bottom:50px;">Signature Creations</h2>
+        <div class="menu-grid">
+            <div class="cake-card">
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?w=600')"></div>
+                <div class="cake-info">
+                    <h3>Red Velvet Dream</h3>
+                    <p style="color:var(--primary-red); font-weight:bold; font-size:1.4rem; margin:10px 0;">₦25,000</p>
+                    <button class="btn btn-red" onclick="addToCart('Red Velvet Dream', 25000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="cake-card">
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600')"></div>
+                <div class="cake-info">
+                    <h3>Decadent Chocolate</h3>
+                    <p style="color:var(--primary-red); font-weight:bold; font-size:1.4rem; margin:10px 0;">₦30,000</p>
+                    <button class="btn btn-red" onclick="addToCart('Decadent Chocolate', 30000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="cake-card">
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1535141192574-5d4897c12636?w=600')"></div>
+                <div class="cake-info">
+                    <h3>Vanilla Gold Bloom</h3>
+                    <p style="color:var(--primary-red); font-weight:bold; font-size:1.4rem; margin:10px 0;">₦22,000</p>
+                    <button class="btn btn-red" onclick="addToCart('Vanilla Gold Bloom', 22000)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+            <h2 style="font-family:'Playfair Display';">Your Cart</h2>
+            <i class="fas fa-times" style="cursor:pointer; font-size:1.5rem;" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-items"></div>
+        <div style="margin:30px 0; border-top: 2px solid #eee; padding-top:20px;">
+            <h3 style="display:flex; justify-content:space-between;">Total: <span>₦<span id="cart-total">0</span></span></h3>
+        </div>
+
+        <div class="payment-box">
+            <h4 style="color:var(--primary-red); margin-bottom:10px;">Bank Transfer Details</h4>
+            <p><strong>Bank:</strong> Opay</p>
+            <p><strong>Account:</strong> 9069334437</p>
+            <p><strong>Name:</strong> Faturoti Goodness Ayomide</p>
+        </div>
+
+        <button class="btn btn-red" onclick="checkout()">Checkout on WhatsApp</button>
+    </div>
+
+    <a href="https://www.tiktok.com/@18th_recipe?_r=1&_t=ZS-943we4fg59G" target="_blank" class="float-btn tiktok-float"><i class="fab fa-tiktok"></i></a>
+    <a href="https://wa.me/2349069334437" class="float-btn whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        let cart = [];
+        const WHATSAPP_NUM = "2349069334437";
+
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            updateCart();
+            if(!document.getElementById('cart-sidebar').classList.contains('active')) toggleCart();
+        }
+
+        function updateCart() {
+            const list = document.getElementById('cart-items');
+            const total = document.getElementById('cart-total');
+            list.innerHTML = "";
+            let sum = 0;
+            cart.forEach((item, index) => {
+                sum += item.price;
+                list.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>₦${item.price.toLocaleString()}</span></div>`;
+            });
+            document.getElementById('cart-count').innerText = cart.length;
+            total.innerText = sum.toLocaleString();
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Your cart is empty!");
+            let orderText = "I'm making an order from the 18th Recipe website:%0A%0A";
+            cart.forEach(item => orderText += `- ${item.name} (₦${item.price.toLocaleString()})%0A`);
+            orderText += `%0A*Total: ₦${document.getElementById('cart-total').innerText}*%0AI am sending my payment receipt now!`;
+            window.open(`https://wa.me/${WHATSAPP_NUM}?text=${orderText}`, '_blank');
+        }
+    </script>
+</body>
+</html>
