@@ -16,7 +16,7 @@
             --dark-red: #9B1C1C;
             --white: #FFFFFF;
             --light-gray: #FAFAFA;
-            --glass-white: rgba(255, 255, 255, 0.9);
+            --glass-white: rgba(255, 255, 255, 0.95);
             --text-dark: #1A1A1A;
             --text-muted: #555555;
             --tiktok-black: #010101;
@@ -35,7 +35,7 @@
             line-height: 1.7;
         }
 
-        /* Navbar Styling */
+        /* Navbar */
         .navbar {
             position: fixed; top: 0; width: 100%; 
             display: flex; justify-content: space-between; align-items: center; 
@@ -44,7 +44,7 @@
             z-index: 1000; box-shadow: var(--shadow-sm);
         }
         .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 60px; width: auto; transition: var(--transition); }
+        .logo-img { height: 60px; width: auto; object-fit: contain; }
         .logo-text { 
             font-family: 'Playfair Display', serif; 
             font-size: 1.6rem; color: var(--primary-red); 
@@ -55,144 +55,99 @@
         .nav-links li a { 
             text-decoration: none; color: var(--text-dark); 
             margin-left: 30px; font-weight: 600; font-size: 0.95rem;
-            transition: var(--transition); position: relative;
-        }
-        .nav-links li a::after {
-            content: ''; position: absolute; bottom: -5px; left: 0;
-            width: 0; height: 2px; background: var(--primary-red);
             transition: var(--transition);
         }
-        .nav-links li a:hover::after { width: 100%; }
         .nav-links li a:hover { color: var(--primary-red); }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1535141192574-5d4897c12636?q=80&w=1920&auto=format&fit=crop') center/cover;
+            height: 80vh;
+            background: #222 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center; 
-            text-align: center; color: white; position: relative;
+            text-align: center; color: white; margin-top: 60px;
         }
-        .hero-content h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(2.5rem, 8vw, 5rem); 
-            font-style: italic; margin-bottom: 10px;
-        }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 10px; }
         .hero-content p { font-size: 1.4rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 30px; }
 
-        /* CTA Button */
+        /* Buttons */
         .btn { 
             padding: 16px 40px; border-radius: 100px; cursor: pointer; border: none; 
             font-weight: 600; transition: var(--transition); text-decoration: none; 
-            display: inline-block; letter-spacing: 1px; text-transform: uppercase; font-size: 0.85rem;
+            display: inline-block; text-transform: uppercase; font-size: 0.85rem;
         }
-        .btn-red { background: var(--primary-red); color: white; box-shadow: 0 10px 20px rgba(211, 47, 47, 0.3); }
-        .btn-red:hover { background: var(--dark-red); transform: translateY(-3px); box-shadow: 0 15px 25px rgba(211, 47, 47, 0.4); }
+        .btn-red { background: var(--primary-red); color: white; box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2); }
+        .btn-red:hover { background: var(--dark-red); transform: translateY(-3px); }
 
         /* Menu Section */
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-        .section-title { 
-            text-align: center; margin-bottom: 60px; font-family: 'Playfair Display', serif;
-            font-size: 3rem; position: relative;
-        }
-        .section-title::after {
-            content: '❦'; display: block; font-size: 1.5rem; color: var(--primary-red); margin-top: 10px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-title { text-align: center; margin-bottom: 50px; font-family: 'Playfair Display', serif; font-size: 2.8rem; }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .cake-card { 
-            background: white; border-radius: 25px; overflow: hidden; 
+            background: white; border-radius: 20px; overflow: hidden; 
             box-shadow: var(--shadow-sm); border: 1px solid #f0f0f0; 
-            transition: var(--transition); position: relative;
+            transition: var(--transition);
         }
-        .cake-card:hover { transform: translateY(-15px); box-shadow: var(--shadow-lg); }
-        .cake-img { height: 350px; background-size: cover; background-position: center; transition: transform 0.8s ease; }
-        .cake-card:hover .cake-img { transform: scale(1.05); }
+        .cake-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .cake-img { height: 320px; background-color: #eee; background-size: cover; background-position: center; width: 100%; object-fit: cover; }
         
-        .cake-info { padding: 30px; text-align: center; background: white; position: relative; z-index: 2; }
-        .cake-info h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 10px; }
-        .price-tag { color: var(--primary-red); font-weight: bold; font-size: 1.4rem; margin-bottom: 20px; display: block; }
+        .cake-info { padding: 25px; text-align: center; }
+        .cake-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+        .price-tag { color: var(--primary-red); font-weight: bold; font-size: 1.3rem; margin-bottom: 15px; display: block; }
 
-        /* Review Section */
-        .review-section { background: var(--light-gray); padding: 100px 0; }
+        /* Review Box */
         .review-box { 
-            background: white; padding: 50px; border-radius: 30px; 
-            max-width: 700px; margin: 0 auto; box-shadow: var(--shadow-lg);
+            background: var(--light-gray); padding: 40px; border-radius: 25px; 
+            max-width: 600px; margin: 0 auto; box-shadow: var(--shadow-sm);
         }
-        .input-group { margin-bottom: 25px; text-align: left; }
-        .input-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; color: var(--text-muted); }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        .input-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
         .input-group input, .input-group textarea { 
-            width: 100%; padding: 15px; border: 1.5px solid #eee; 
-            border-radius: 12px; font-family: inherit; transition: var(--transition);
-            background: #fafafa;
+            width: 100%; padding: 12px; border: 1.5px solid #eee; 
+            border-radius: 10px; font-family: inherit; 
         }
-        .input-group input:focus, .input-group textarea:focus { border-color: var(--primary-red); outline: none; background: white; }
 
         /* Cart Sidebar */
         .cart-sidebar {
-            position: fixed; top: 0; right: -100%; width: 450px; height: 100%; background: white;
-            z-index: 2001; box-shadow: -15px 0 40px rgba(0,0,0,0.15); transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1); 
-            padding: 40px; display: flex; flex-direction: column;
+            position: fixed; top: 0; right: -100%; width: 420px; height: 100%; background: white;
+            z-index: 2001; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.5s ease; 
+            padding: 35px; display: flex; flex-direction: column;
         }
         .cart-sidebar.active { right: 0; }
-        .cart-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .cart-header h2 { font-family: 'Playfair Display', serif; font-size: 2rem; }
-        
-        #cart-items { flex-grow: 1; overflow-y: auto; }
-        .cart-item { 
-            display: flex; justify-content: space-between; align-items: center; 
-            padding: 15px 0; border-bottom: 1px solid #f0f0f0; animation: fadeIn 0.3s ease;
-        }
+        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
         
         .payment-box { 
-            background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); 
-            padding: 25px; border-radius: 20px; margin: 30px 0; 
-            border-left: 5px solid var(--primary-red); box-shadow: var(--shadow-sm);
+            background: #fffafa; padding: 20px; border-radius: 15px; margin: 25px 0; 
+            border: 1px dashed var(--primary-red); font-size: 0.9rem;
         }
-        .payment-box p { font-size: 0.95rem; margin-bottom: 5px; }
 
-        /* Floating Elements */
-        .cart-icon-wrapper { cursor: pointer; position: relative; transition: var(--transition); }
-        .cart-icon-wrapper:hover { transform: scale(1.1); }
+        /* Floating UI */
+        .cart-icon-wrapper { cursor: pointer; position: relative; }
         #cart-count { 
             position: absolute; top: -8px; right: -10px; 
             background: var(--primary-red); color: white; 
-            border-radius: 50%; width: 20px; height: 20px; 
-            display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; font-weight: bold; border: 2px solid white;
+            border-radius: 50%; padding: 2px 7px; font-size: 0.7rem; font-weight: bold;
         }
 
-        .float-btns { position: fixed; left: 30px; bottom: 30px; z-index: 100; display: flex; flex-direction: column; gap: 15px; }
+        .float-btns { position: fixed; left: 25px; bottom: 25px; z-index: 100; display: flex; flex-direction: column; gap: 12px; }
         .float-btn { 
-            width: 60px; height: 60px; border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; font-size: 26px; 
-            color: white; text-decoration: none; box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-            transition: var(--transition);
+            width: 55px; height: 55px; border-radius: 50%; display: flex; 
+            align-items: center; justify-content: center; font-size: 24px; 
+            color: white; text-decoration: none; box-shadow: var(--shadow-lg); transition: 0.3s;
         }
-        .float-btn:hover { transform: scale(1.1) rotate(5deg); }
         .whatsapp-float { background: #25d366; }
         .tiktok-float { background: var(--tiktok-black); }
 
         /* Footer */
-        footer { background: #111; color: white; padding: 80px 10% 40px; text-align: center; }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--white); margin-bottom: 10px; }
-        .footer-tagline { color: #888; letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 40px; }
-        .social-links { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
-        .social-links a { color: white; font-size: 1.5rem; transition: var(--transition); }
-        .social-links a:hover { color: var(--primary-red); }
-        .location { font-size: 0.9rem; color: #666; margin-top: 20px; border-top: 1px solid #222; padding-top: 20px; }
+        footer { background: #111; color: white; padding: 60px 5% 30px; text-align: center; }
+        .footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--white); margin-bottom: 5px; }
+        .location { font-size: 0.85rem; color: #777; margin-top: 15px; }
 
-        /* Animations */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* Responsiveness */
         @media (max-width: 768px) {
-            .navbar { padding: 15px 5%; }
             .nav-links { display: none; }
             .cart-sidebar { width: 100%; }
-            .hero-content h1 { font-size: 3rem; }
-            .float-btns { left: 20px; bottom: 20px; }
-            .section-title { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -200,110 +155,104 @@
 
     <nav class="navbar">
         <a href="#" class="logo-container">
-            <img src="logo.png" class="logo-img" alt="18th Recipe Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/992/992717.png'; this.style.filter='invert(1)'">
+            <img src="logo.png" class="logo-img" alt="18th Recipe Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/992/992717.png';">
             <span class="logo-text">18th Recipe</span>
         </a>
         <div style="display:flex; align-items:center;">
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#menu">Menu</a></li>
+                <li><a href="#menu">Cakes</a></li>
                 <li><a href="#reviews">Reviews</a></li>
             </ul>
-            <div class="cart-icon-wrapper" onclick="toggleCart()" style="margin-left: 25px;">
-                <i class="fas fa-shopping-bag" style="font-size: 1.6rem;"></i>
+            <div class="cart-icon-wrapper" onclick="toggleCart()" style="margin-left: 20px;">
+                <i class="fas fa-shopping-bag" style="font-size: 1.5rem;"></i>
                 <span id="cart-count">0</span>
             </div>
         </div>
     </nav>
 
     <section class="hero" id="home">
-        <div class="hero-content" data-aos="zoom-out" data-aos-duration="1500">
+        <div class="hero-content" data-aos="fade-up">
             <h1>18th Recipe</h1>
             <p>“Cravings Satisfied”</p>
-            <a href="#menu" class="btn btn-red">Order Now</a>
+            <a href="#menu" class="btn btn-red">Browse Menu</a>
         </div>
     </section>
 
     <div class="container" id="menu">
-        <h2 class="section-title" data-aos="fade-up">Our Signature Collection</h2>
+        <h2 class="section-title" data-aos="fade-up">Signature Cakes</h2>
         <div class="menu-grid">
-            <div class="cake-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1586788680434-30d324671ff6?q=80&w=800&auto=format&fit=crop')"></div>
+            <div class="cake-card" data-aos="fade-up">
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1586788680434-30d324671ff6?auto=format&fit=crop&w=1200&q=80')"></div>
                 <div class="cake-info">
-                    <h3>Red Velvet Royale</h3>
+                    <h3>Red Velvet Dream</h3>
                     <span class="price-tag">₦25,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Red Velvet Royale', 25000)">Add to Cart</button>
+                    <button class="btn btn-red" onclick="addToCart('Red Velvet Dream', 25000)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="cake-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=1200&q=80')"></div>
+                <div class="cake-info">
+                    <h3>Chocolate Truffle</h3>
+                    <span class="price-tag">₦30,000</span>
+                    <button class="btn btn-red" onclick="addToCart('Chocolate Truffle', 30000)">Add to Cart</button>
                 </div>
             </div>
             <div class="cake-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?q=80&w=800&auto=format&fit=crop')"></div>
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1535254973040-607b474cb8c9?auto=format&fit=crop&w=1200&q=80')"></div>
                 <div class="cake-info">
-                    <h3>Grand Chocolate Truffle</h3>
-                    <span class="price-tag">₦30,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Grand Chocolate Truffle', 30000)">Add to Cart</button>
+                    <h3>Vanilla Bloom</h3>
+                    <span class="price-tag">₦22,000</span>
+                    <button class="btn btn-red" onclick="addToCart('Vanilla Bloom', 22000)">Add to Cart</button>
                 </div>
             </div>
             <div class="cake-card" data-aos="fade-up" data-aos-delay="300">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1535254973040-607b474cb8c9?q=80&w=800&auto=format&fit=crop')"></div>
+                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1621303837174-89787a7d4729?auto=format&fit=crop&w=1200&q=80')"></div>
                 <div class="cake-info">
-                    <h3>Vanilla Bloom Wedding</h3>
-                    <span class="price-tag">₦45,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Vanilla Bloom Wedding', 45000)">Add to Cart</button>
-                </div>
-            </div>
-            <div class="cake-card" data-aos="fade-up" data-aos-delay="400">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=800&auto=format&fit=crop')"></div>
-                <div class="cake-info">
-                    <h3>Gourmet Small Chops</h3>
+                    <h3>Lagos Small Chops</h3>
                     <span class="price-tag">₦15,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Gourmet Small Chops', 15000)">Add to Cart</button>
+                    <button class="btn btn-red" onclick="addToCart('Lagos Small Chops', 15000)">Add to Cart</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="review-section" id="reviews">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Guest Feedback</h2>
-            <div class="review-box" data-aos="fade-up">
-                <div class="input-group">
-                    <label>Full Name</label>
-                    <input type="text" id="rev-name" placeholder="E.g. Chioma Adebayo">
-                </div>
-                <div class="input-group">
-                    <label>Your Review</label>
-                    <textarea id="rev-text" rows="4" placeholder="How did we satisfy your cravings?"></textarea>
-                </div>
-                <button class="btn btn-red" style="width:100%" onclick="sendReview()">Submit Review</button>
+    <section class="container" id="reviews" style="text-align:center;">
+        <h2 class="section-title" data-aos="fade-up">Share Your Experience</h2>
+        <div class="review-box" data-aos="fade-up">
+            <div class="input-group">
+                <label>Name</label>
+                <input type="text" id="rev-name" placeholder="Your Name">
             </div>
+            <div class="input-group">
+                <label>Review</label>
+                <textarea id="rev-text" rows="3" placeholder="How was the cake?"></textarea>
+            </div>
+            <button class="btn btn-red" style="width:100%" onclick="sendReview()">Submit to WhatsApp</button>
         </div>
     </section>
 
     <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
-            <h2>Your Order</h2>
-            <i class="fas fa-times" style="font-size: 1.5rem; cursor:pointer;" onclick="toggleCart()"></i>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
+            <h2 style="font-family:'Playfair Display';">Your Cart</h2>
+            <i class="fas fa-times" style="font-size: 1.4rem; cursor:pointer;" onclick="toggleCart()"></i>
         </div>
         
-        <div id="cart-items">
-            </div>
+        <div id="cart-items" style="flex-grow:1; overflow-y:auto;"></div>
 
-        <div style="margin-top:20px; border-top: 2px solid #f0f0f0; padding-top:20px;">
-            <h3 style="display:flex; justify-content:space-between; margin-bottom: 20px;">
+        <div style="margin-top:20px; border-top: 2px solid #f0f0f0; padding-top:15px;">
+            <h3 style="display:flex; justify-content:space-between;">
                 Total: <span style="color:var(--primary-red);">₦<span id="cart-total">0</span></span>
             </h3>
         </div>
 
         <div class="payment-box">
-            <h4 style="color:var(--primary-red); margin-bottom:10px; font-size: 0.9rem; text-transform: uppercase;">Payment Details</h4>
             <p><strong>Bank:</strong> OPAY</p>
             <p><strong>Account:</strong> 9069334437</p>
             <p><strong>Name:</strong> Faturoti Goodness Ayomide</p>
         </div>
 
-        <button class="btn btn-red" style="width:100%" onclick="checkout()">
-            <i class="fab fa-whatsapp"></i> Checkout via WhatsApp
-        </button>
+        <button class="btn btn-red" style="width:100%" onclick="checkout()">Checkout on WhatsApp</button>
     </div>
 
     <div class="float-btns">
@@ -313,20 +262,14 @@
 
     <footer>
         <div class="footer-logo">18th Recipe</div>
-        <div class="footer-tagline">Cravings Satisfied</div>
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="https://www.tiktok.com/@18th_recipe?_r=1&_t=ZS-943we4fg59G"><i class="fab fa-tiktok"></i></a>
-        </div>
-        <p>© 2024 18th Recipe Nigeria. Premium Handcrafted Delights.</p>
-        <div class="location">Lagos • Ibadan • Delivery Nationwide</div>
+        <p style="letter-spacing: 2px; color: #888; font-size: 0.8rem;">CRAVINGS SATISFIED</p>
+        <div class="location">Based in Nigeria • Quality Handcrafted Cakes</div>
+        <p style="font-size: 0.7rem; color: #444; margin-top: 30px;">© 2024 18th Recipe. All Rights Reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Initialize Scroll Animations
-        AOS.init({ once: true, duration: 800 });
+        AOS.init({ duration: 800, once: true });
 
         let cart = [];
         const PHONE = "2349069334437";
@@ -338,12 +281,6 @@
         function addToCart(name, price) {
             cart.push({name, price});
             updateUI();
-            
-            // Show cart count animation
-            const count = document.getElementById('cart-count');
-            count.style.transform = "scale(1.5)";
-            setTimeout(() => count.style.transform = "scale(1)", 200);
-
             if(!document.getElementById('cart-sidebar').classList.contains('active')) toggleCart();
         }
 
@@ -353,36 +290,34 @@
             list.innerHTML = "";
             let sum = 0;
             
-            cart.forEach((item, index) => {
+            cart.forEach((item) => {
                 sum += item.price;
                 list.innerHTML += `
                     <div class="cart-item">
-                        <div>
-                            <p style="font-weight:600">${item.name}</p>
-                            <p style="font-size:0.8rem; color:#888">₦${item.price.toLocaleString()}</p>
-                        </div>
-                        <i class="fas fa-trash-alt" style="color:#ddd; cursor:pointer" onclick="removeItem(${index})"></i>
+                        <span>${item.name}</span>
+                        <span>₦${item.price.toLocaleString()}</span>
                     </div>`;
             });
             document.getElementById('cart-count').innerText = cart.length;
             total.innerText = sum.toLocaleString();
         }
 
-        function removeItem(index) {
-            cart.splice(index, 1);
-            updateUI();
-        }
-
         function checkout() {
             if(cart.length === 0) return alert("Your cart is empty!");
             
-            let msg = "Hello, I'm ordering from the website, here's my receipt:%0A%0A";
-            cart.forEach(item => msg += `• ${item.name} (₦${item.price.toLocaleString()})%0A`);
-            msg += `%0A*Total Amount: ₦${document.getElementById('cart-total').innerText}*%0A%0AI have made the transfer to the Opay account. Sending receipt now!`;
+            // Build the New Professional Message
+            let itemsString = "";
+            cart.forEach(item => {
+                itemsString += `${item.name} (₦${item.price.toLocaleString()})%0A`;
+            });
+
+            const totalAmount = document.getElementById('cart-total').innerText;
             
-            window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
+            const message = `Hello 18th Recipe 🍰%0A%0AI'm placing an order from your website.%0A%0A🛒 *Order Details:*%0A${itemsString}%0A💰 *Total: ₦${totalAmount}*%0A%0AI have made the transfer to:%0ABank: *OPAY*%0AAccount Number: *9069334437*%0AAccount Name: *Faturoti Goodness Ayomide*%0A%0APlease find my payment receipt attached.%0AThank you.%0A%0ACravings Satisfied ❤️`;
             
-            // Clear cart logic
+            window.open(`https://wa.me/${PHONE}?text=${message}`, '_blank');
+
+            // NEW: Clear cart after WhatsApp opens
             cart = [];
             updateUI();
             toggleCart();
@@ -391,14 +326,10 @@
         function sendReview() {
             const name = document.getElementById('rev-name').value;
             const text = document.getElementById('rev-text').value;
+            if(!name || !text) return alert("Please fill in both fields!");
             
-            if(!name || !text) {
-                alert("Please share your name and experience!");
-                return;
-            }
-            
-            let msg = `*New Brand Review for 18th Recipe*%0A%0A*Customer:* ${name}%0A*Review:* ${text}%0A%0A_Sent via Website_`;
-            window.open(`https://wa.me/${PHONE}?text=${msg}`, '_blank');
+            const message = `*New Brand Review for 18th Recipe*%0A%0A*Customer:* ${name}%0A*Review:* ${text}%0A%0A_Sent via Website_`;
+            window.open(`https://wa.me/${PHONE}?text=${message}`, '_blank');
         }
     </script>
 </body>
