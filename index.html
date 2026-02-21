@@ -2,227 +2,324 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>18th Recipe | Cravings Satisfied - Premium Cakes Nigeria</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>18th Recipe | Cravings Satisfied - Luxury Cakes & Small Chops</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         :root {
-            --primary-red: #D32F2F;
-            --dark-red: #9B1C1C;
+            --primary: #C62828;
+            --primary-dark: #8E1C1C;
+            --accent: #FFEBEE;
             --white: #FFFFFF;
-            --light-gray: #FAFAFA;
-            --glass-white: rgba(255, 255, 255, 0.95);
-            --text-dark: #1A1A1A;
-            --tiktok-black: #010101;
-            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
-            --shadow-lg: 0 15px 35px rgba(0,0,0,0.15);
+            --bg-neutral: #F8F8F8;
+            --text-main: #1A1A1A;
+            --text-muted: #555555;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.12);
             --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        
-        body { 
-            font-family: 'Poppins', sans-serif; 
-            color: var(--text-dark); 
-            background: var(--white); 
-            overflow-x: hidden;
-            line-height: 1.7;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
+        html { scroll-behavior: smooth; overflow-x: hidden; }
+        body { font-family: 'Poppins', sans-serif; color: var(--text-main); background: var(--bg-neutral); line-height: 1.6; }
 
-        /* Navbar */
+        /* Navigation */
         .navbar {
-            position: fixed; top: 0; width: 100%; 
+            position: fixed; top: 0; width: 100%; height: 80px;
             display: flex; justify-content: space-between; align-items: center; 
-            padding: 10px 8%; background: var(--glass-white); 
-            backdrop-filter: blur(10px); z-index: 1000; box-shadow: var(--shadow-sm);
+            padding: 0 8%; background: rgba(255, 255, 255, 0.98); 
+            backdrop-filter: blur(15px); z-index: 1000; box-shadow: 0 2px 15px rgba(0,0,0,0.03);
         }
-        .logo-container { display: flex; align-items: center; text-decoration: none; }
-        .logo-img { height: 60px; width: auto; object-fit: contain; }
-        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary-red); font-weight: bold; margin-left: 10px; }
+        .logo-box { display: flex; align-items: center; text-decoration: none; }
+        .logo-img { height: 55px; width: auto; object-fit: contain; }
+        .logo-text { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--primary); font-weight: 700; margin-left: 12px; }
         
-        .nav-links { display: flex; list-style: none; align-items: center; }
-        .nav-links li a { text-decoration: none; color: var(--text-dark); margin-left: 30px; font-weight: 600; transition: var(--transition); }
-        .nav-links li a:hover { color: var(--primary-red); }
+        .nav-menu { display: flex; list-style: none; align-items: center; }
+        .nav-menu li a { text-decoration: none; color: var(--text-main); margin-left: 35px; font-weight: 500; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; transition: var(--transition); }
+        .nav-menu li a:hover { color: var(--primary); }
 
-        /* Hero - FIXED BACKGROUND */
+        .cart-trigger { position: relative; cursor: pointer; margin-left: 35px; }
+        #cart-count { 
+            position: absolute; top: -10px; right: -12px; background: var(--primary); color: white; 
+            border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; 
+            justify-content: center; font-size: 0.75rem; font-weight: 600; border: 2px solid white;
+        }
+
+        /* Hero */
         .hero {
-            height: 85vh; width: 100%; margin-top: 60px; position: relative;
-            display: flex; align-items: center; justify-content: center; 
-            text-align: center; color: white;
-            background-color: #1a1a1a; 
-            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
-                              url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80');
-            background-position: center; background-size: cover; background-repeat: no-repeat;
+            position: relative; height: 90vh; width: 100%; display: flex; align-items: center; 
+            justify-content: center; text-align: center; color: white; overflow: hidden; background: #111;
         }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 10px; }
-        .hero-content p { font-size: 1.4rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 30px; }
+        .hero-image {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1600&q=80') center/cover;
+            z-index: 1; transform: scale(1.05);
+        }
+        .hero-content { position: relative; z-index: 2; padding: 0 20px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.5rem); margin-bottom: 10px; }
+        .hero-content p { font-size: 1.2rem; letter-spacing: 5px; text-transform: uppercase; margin-bottom: 30px; }
 
-        /* Buttons */
+        /* Sections */
+        .section { padding: 80px 8%; }
+        .section-title { text-align: center; margin-bottom: 60px; font-family: 'Playfair Display', serif; font-size: 2.8rem; }
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+        .card-img { height: 280px; width: 100%; object-fit: cover; }
+        .card-body { padding: 25px; text-align: center; flex-grow: 1; }
+        .card-price { color: var(--primary); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; display: block; }
+
         .btn { 
-            padding: 16px 40px; border-radius: 100px; cursor: pointer; border: none; 
-            font-weight: 600; transition: var(--transition); text-decoration: none; 
-            display: inline-block; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px;
+            padding: 14px 30px; border-radius: 10px; cursor: pointer; border: none; 
+            font-weight: 600; text-transform: uppercase; font-size: 0.8rem; transition: var(--transition);
+            display: inline-block; text-decoration: none; text-align: center;
         }
-        .btn-red { background: var(--primary-red); color: white; box-shadow: 0 10px 20px rgba(211, 47, 47, 0.2); }
-        .btn-red:hover { background: var(--dark-red); transform: translateY(-3px); }
-
-        /* Menu */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .section-title { text-align: center; margin-bottom: 50px; font-family: 'Playfair Display', serif; font-size: 2.8rem; }
-
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .cake-card { 
-            background: white; border-radius: 20px; overflow: hidden; 
-            box-shadow: var(--shadow-sm); border: 1px solid #f0f0f0; transition: var(--transition);
-        }
-        .cake-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
-        .cake-img { height: 320px; background-color: #eee; background-size: cover; background-position: center; width: 100%; }
-        .cake-info { padding: 25px; text-align: center; }
-        .cake-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
-        .price-tag { color: var(--primary-red); font-weight: bold; font-size: 1.3rem; margin-bottom: 15px; display: block; }
+        .btn-primary { background: var(--primary); color: white; width: 100%; }
 
         /* Review Section */
-        .review-box { 
-            background: var(--light-gray); padding: 40px; border-radius: 25px; 
-            max-width: 600px; margin: 40px auto; box-shadow: var(--shadow-sm);
-        }
+        .review-box { max-width: 600px; margin: 40px auto; background: white; padding: 40px; border-radius: 20px; box-shadow: var(--shadow-sm); }
         .input-group { margin-bottom: 20px; text-align: left; }
         .input-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.9rem; }
-        .input-group input, .input-group textarea { 
-            width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-family: inherit; 
-        }
+        .input-group input, .input-group textarea { width: 100%; padding: 12px; border: 1.5px solid #eee; border-radius: 10px; font-family: inherit; }
 
         /* Cart Sidebar */
-        .cart-sidebar {
-            position: fixed; top: 0; right: -100%; width: 420px; height: 100%; background: white;
-            z-index: 2001; box-shadow: -10px 0 30px rgba(0,0,0,0.1); transition: 0.5s ease; 
-            padding: 35px; display: flex; flex-direction: column;
+        .cart-pane {
+            position: fixed; top: 0; right: -100%; width: 400px; height: 100%; background: white;
+            z-index: 2000; box-shadow: -10px 0 40px rgba(0,0,0,0.1); transition: 0.5s; padding: 40px;
+            display: flex; flex-direction: column;
         }
-        .cart-sidebar.active { right: 0; }
-        .cart-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #f0f0f0; }
+        .cart-pane.active { right: 0; }
+        .cart-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1999; display: none; }
+        .cart-pane.active ~ .cart-mask { display: block; }
         
-        .payment-box { 
-            background: #fffafa; padding: 20px; border-radius: 15px; margin: 25px 0; 
-            border: 1px dashed var(--primary-red); font-size: 0.9rem;
-        }
+        .cart-item { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #eee; }
+        .pay-box { background: var(--accent); padding: 15px; border-radius: 10px; margin: 15px 0; border: 1px dashed var(--primary); font-size: 0.85rem; }
+        
+        .upload-area { margin-bottom: 15px; }
+        .upload-label { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; cursor: pointer; font-size: 0.8rem; background: #fafafa; }
+        #receipt-upload { display: none; }
 
-        /* Float UI */
-        .cart-icon-wrapper { cursor: pointer; position: relative; }
-        #cart-count { 
-            position: absolute; top: -8px; right: -10px; background: var(--primary-red); 
-            color: white; border-radius: 50%; padding: 2px 7px; font-size: 0.7rem; font-weight: bold;
-        }
-        .float-btns { position: fixed; left: 25px; bottom: 25px; z-index: 100; display: flex; flex-direction: column; gap: 12px; }
-        .float-btn { 
-            width: 55px; height: 55px; border-radius: 50%; display: flex; 
-            align-items: center; justify-content: center; font-size: 24px; color: white; text-decoration: none; box-shadow: var(--shadow-lg); transition: 0.3s;
-        }
-        .whatsapp-float { background: #25d366; }
-        .tiktok-float { background: var(--tiktok-black); }
+        .delivery-note { font-size: 0.75rem; color: var(--primary); font-weight: 600; margin-bottom: 15px; text-align: center; font-style: italic; }
 
-        footer { background: #111; color: white; padding: 60px 5% 30px; text-align: center; }
-        .footer-logo { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 5px; }
+        /* Socials */
+        .fab-group { position: fixed; left: 25px; bottom: 25px; z-index: 1500; display: flex; flex-direction: column; gap: 15px; }
+        .fab { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; text-decoration: none; box-shadow: var(--shadow-md); transition: 0.3s; }
+        .wa-fab { background: #25D366; }
+        .tk-fab { background: #000000; }
 
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .cart-sidebar { width: 100%; }
-        }
+        footer { background: #111; color: white; padding: 60px 8% 30px; text-align: center; }
+        .f-copy { margin-top: 40px; font-size: 0.8rem; color: #666; border-top: 1px solid #222; padding-top: 20px; }
+
+        @media (max-width: 768px) { .cart-pane { width: 100%; } .nav-menu { display: none; } }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <a href="#" class="logo-container">
-            <img src="logo.png" class="logo-img" alt="18th Recipe Logo" onerror="this.src='https://cdn-icons-png.flaticon.com/512/992/992717.png';">
+        <a href="#" class="logo-box">
+            <img src="logo.png" alt="18th Recipe Logo" class="logo-img" onerror="this.style.display='none'">
             <span class="logo-text">18th Recipe</span>
         </a>
-        <div style="display:flex; align-items:center;">
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#menu">Cakes</a></li>
-                <li><a href="#reviews">Reviews</a></li>
-            </ul>
-            <div class="cart-icon-wrapper" onclick="toggleCart()" style="margin-left: 20px;">
-                <i class="fas fa-shopping-bag" style="font-size: 1.5rem;"></i>
-                <span id="cart-count">0</span>
-            </div>
+        <ul class="nav-menu">
+            <li><a href="#cakes">Cakes</a></li>
+            <li><a href="#small-chops">Small Chops</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+        <div class="cart-trigger" onclick="toggleCart()">
+            <i class="fa-solid fa-cart-shopping" style="font-size: 1.4rem;"></i>
+            <span id="cart-count">0</span>
         </div>
     </nav>
 
-    <section class="hero" id="home">
+    <div class="cart-pane" id="cart-sidebar">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+            <h2 style="font-family:'Playfair Display'">My Basket</h2>
+            <i class="fa-solid fa-xmark" style="cursor:pointer; font-size:1.5rem" onclick="toggleCart()"></i>
+        </div>
+        <div id="cart-list" style="flex-grow:1; overflow-y:auto; border-bottom: 1px solid #eee;"></div>
+        
+        <div style="padding-top:15px;">
+            <div style="display:flex; justify-content:space-between; font-size:1.2rem; font-weight:700; margin-bottom:10px">
+                <span>Total Amount:</span>
+                <span>₦<span id="cart-total">0</span></span>
+            </div>
+            
+            <div class="pay-box">
+                <p><strong>Bank:</strong> OPAY | <strong>9069334437</strong></p>
+                <p><strong>Name:</strong> Faturoti Goodness Ayomide</p>
+            </div>
+
+            <p class="delivery-note">Note: You'll be asked for your address in the chat!</p>
+            
+            <div class="upload-area">
+                <label for="receipt-upload" class="upload-label" id="file-label">
+                    <i class="fa-solid fa-camera"></i> <span>Upload Payment Receipt</span>
+                </label>
+                <input type="file" id="receipt-upload" accept="image/*" onchange="handleFile(this)">
+            </div>
+            
+            <button class="btn btn-primary" onclick="checkout()">Finalize Order on WhatsApp</button>
+        </div>
+    </div>
+    <div class="cart-mask" onclick="toggleCart()"></div>
+
+    <section class="hero">
+        <div class="hero-image"></div>
         <div class="hero-content" data-aos="fade-up">
             <h1>18th Recipe</h1>
-            <p>“Cravings Satisfied”</p>
-            <a href="#menu" class="btn btn-red">Browse Menu</a>
+            <p>Cravings Satisfied</p>
+            <a href="#cakes" class="btn" style="background:white; color:black">Start Ordering</a>
         </div>
     </section>
 
-    <div class="container" id="menu">
-        <h2 class="section-title" data-aos="fade-up">Our Premium Collection</h2>
-        <div class="menu-grid">
-            <div class="cake-card" data-aos="fade-up">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1586788680434-30d324671ff6?auto=format&fit=crop&w=1200&q=80')"></div>
-                <div class="cake-info">
-                    <h3>Red Velvet Dream</h3>
-                    <span class="price-tag">₦25,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Red Velvet Dream', 25000)">Add to Cart</button>
+    <section class="section" id="cakes">
+        <h2 class="section-title" data-aos="fade-up">Premium Cakes</h2>
+        <div class="product-grid">
+            <div class="card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1586788680434-30d324671ff6?auto=format&fit=crop&w=600" class="card-img">
+                <div class="card-body">
+                    <h3>Red Velvet Supreme</h3>
+                    <span class="card-price">₦25,000</span>
+                    <button class="btn btn-primary" onclick="addToCart('Red Velvet Supreme', 25000)">Add to Cart</button>
                 </div>
             </div>
-            <div class="cake-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=1200&q=80')"></div>
-                <div class="cake-info">
-                    <h3>Chocolate Truffle</h3>
-                    <span class="price-tag">₦30,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Chocolate Truffle', 30000)">Add to Cart</button>
-                </div>
-            </div>
-            <div class="cake-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="cake-img" style="background-image: url('https://images.unsplash.com/photo-1535254973040-607b474cb8c9?auto=format&fit=crop&w=1200&q=80')"></div>
-                <div class="cake-info">
-                    <h3>Vanilla Bloom</h3>
-                    <span class="price-tag">₦22,000</span>
-                    <button class="btn btn-red" onclick="addToCart('Vanilla Bloom', 22000)">Add to Cart</button>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?auto=format&fit=crop&w=600" class="card-img">
+                <div class="card-body">
+                    <h3>Double Chocolate</h3>
+                    <span class="card-price">₦30,000</span>
+                    <button class="btn btn-primary" onclick="addToCart('Double Chocolate', 30000)">Add to Cart</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <section class="container" id="reviews" style="text-align:center;">
-        <h2 class="section-title" data-aos="fade-up">Guest Reviews</h2>
+    <section class="section" id="small-chops">
+        <h2 class="section-title" data-aos="fade-up">Small Chops</h2>
+        <div class="product-grid">
+            <div class="card" data-aos="fade-up">
+                <img src="https://images.unsplash.com/photo-1601050690597-df056fb1779f?auto=format&fit=crop&w=600" class="card-img">
+                <div class="card-body">
+                    <h3>Spicy Samosas</h3>
+                    <span class="card-price">₦5,500</span>
+                    <button class="btn btn-primary" onclick="addToCart('Spicy Samosas', 5500)">Add to Cart</button>
+                </div>
+            </div>
+            <div class="card" data-aos="fade-up" data-aos-delay="100">
+                <img src="https://images.unsplash.com/photo-1612392062631-94dd858cba88?auto=format&fit=crop&w=600" class="card-img">
+                <div class="card-body">
+                    <h3>Glazed Puff Puff</h3>
+                    <span class="card-price">₦2,500</span>
+                    <button class="btn btn-primary" onclick="addToCart('Glazed Puff Puff', 2500)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="reviews" style="text-align:center; background: #fff;">
+        <h2 class="section-title" data-aos="fade-up">Customer Reviews</h2>
         <div class="review-box" data-aos="fade-up">
             <div class="input-group">
                 <label>Name</label>
-                <input type="text" id="rev-name" placeholder="Enter your name">
+                <input type="text" id="rev-name" placeholder="Full name">
             </div>
             <div class="input-group">
-                <label>Experience</label>
-                <textarea id="rev-text" rows="3" placeholder="How did we satisfy your cravings?"></textarea>
+                <label>Comment</label>
+                <textarea id="rev-text" rows="3" placeholder="Tell us how it tasted!"></textarea>
             </div>
-            <button class="btn btn-red" style="width:100%" onclick="sendReview()">Send Review</button>
+            <button class="btn btn-primary" onclick="sendReview()">Post Review</button>
         </div>
     </section>
 
-    <div class="cart-sidebar" id="cart-sidebar">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
-            <h2 style="font-family:'Playfair Display';">Your Cart</h2>
-            <i class="fas fa-times" style="font-size: 1.4rem; cursor:pointer;" onclick="toggleCart()"></i>
-        </div>
-        <div id="cart-items" style="flex-grow:1; overflow-y:auto;"></div>
-        <div style="margin-top:20px; border-top: 2px solid #f0f0f0; padding-top:15px;">
-            <h3 style="display:flex; justify-content:space-between;">Total: <span style="color:var(--primary-red);">₦<span id="cart-total">0</span></span></h3>
-        </div>
-        <div class="payment-box">
-            <p><strong>Bank:</strong> OPAY</p>
-            <p><strong>Account:</strong> 9069334437</p>
-            <p><strong>Name:</strong> Faturoti Goodness Ayomide</p>
-        </div>
-        <button class="btn btn-red" style="width:100%" onclick="checkout()">Checkout on WhatsApp</button>
+    <div class="fab-group">
+        <a href="https://www.tiktok.com/@18th_recipe?_r=1&_t=ZS-943we4fg59G" class="fab tk-fab" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://wa.me/2349069334437" class="fab wa-fab" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
     </div>
 
-    <div class="float-btns">
-        <a href="https://www.tiktok.com/@18th_recipe?_r=1&_t=ZS-943we4fg59G" class="float-btn tiktok-float" target="_blank"><i class="
+    <footer>
+        <h2 style="font-family:'Playfair Display'">18th Recipe</h2>
+        <p style="letter-spacing:3px; font-size:0.8rem; color:#888">CRAVINGS SATISFIED</p>
+        <div class="f-copy">
+            <p>&copy; 2026 18th Recipe. Handcrafted with love in Nigeria.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
+
+        let cart = [];
+        const PHONE = "2349069334437";
+
+        function toggleCart() { document.getElementById('cart-sidebar').classList.toggle('active'); }
+
+        function addToCart(name, price) {
+            cart.push({ name, price });
+            updateUI();
+            if(!document.getElementById('cart-sidebar').classList.contains('active')) toggleCart();
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1);
+            updateUI();
+        }
+
+        function updateUI() {
+            const list = document.getElementById('cart-list');
+            const total = document.getElementById('cart-total');
+            const count = document.getElementById('cart-count');
+            list.innerHTML = "";
+            let sum = 0;
+            cart.forEach((item, index) => {
+                sum += item.price;
+                list.innerHTML += `<div class="cart-item"><div><p style="font-weight:600">${item.name}</p><p style="font-size:0.8rem; color:var(--primary)">₦${item.price.toLocaleString()}</p></div><i class="fa-solid fa-trash" style="cursor:pointer; color:#ccc" onclick="removeItem(${index})"></i></div>`;
+            });
+            total.innerText = sum.toLocaleString();
+            count.innerText = cart.length;
+        }
+
+        function handleFile(input) {
+            const label = document.querySelector('#file-label span');
+            if(input.files[0]) label.innerText = input.files[0].name.substring(0, 18) + "...";
+        }
+
+        function checkout() {
+            if(cart.length === 0) return alert("Your cart is empty!");
+            if(!document.getElementById('receipt-upload').files[0]) return alert("Please upload your payment receipt screenshot first!");
+
+            // Detailed Item Breakdown Logic
+            const itemCounts = {};
+            cart.forEach(item => { itemCounts[item.name] = (itemCounts[item.name] || 0) + 1; });
+            
+            let breakdown = "";
+            for (const [name, qty] of Object.entries(itemCounts)) {
+                const itemPrice = cart.find(i => i.name === name).price;
+                breakdown += `• ${name} (x${qty}) — ₦${(itemPrice * qty).toLocaleString()}%0A`;
+            }
+
+            const totalAmount = document.getElementById('cart-total').innerText;
+            
+            // Updated Message with Item Breakdown and Delivery Prompt
+            const message = `Hello 18th Recipe 🍰%0A%0AI've just made a payment and would like to finalize my order.%0A%0A📦 *ORDER BREAKDOWN:*%0A${breakdown}%0A💰 *TOTAL PAID: ₦${totalAmount}*%0A%0A📍 *DELIVERY DETAILS:*%0AName:%0AAddress:%0APhone Number:%0ADelivery Date/Time:%0A%0AI've attached my payment receipt below.%0A%0ACravings Satisfied ❤️`;
+            
+            window.open(`https://wa.me/${PHONE}?text=${message}`, '_blank');
+        }
+
+        function sendReview() {
+            const name = document.getElementById('rev-name').value;
+            const text = document.getElementById('rev-text').value;
+            if(!name || !text) return alert("Please fill in your name and review!");
+            const message = `*New Brand Review for 18th Recipe*%0A%0A*Customer:* ${name}%0A*Review:* ${text}%0A%0A_Sent via Website_`;
+            window.open(`https://wa.me/${PHONE}?text=${message}`, '_blank');
+        }
+    </script>
+</body>
+</html>
